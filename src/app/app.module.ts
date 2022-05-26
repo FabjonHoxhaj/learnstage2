@@ -8,11 +8,13 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HashtagsComponent } from './hashtags/hashtags.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HashtagsComponent,
   ],
   imports: [
     BrowserModule,
