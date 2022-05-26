@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-export const firebaseConfig = {
+export const environment = {
   apiKey: "AIzaSyBeHeNiJaR8st-LLl6sqQHhCa0YooT2tJs",
   authDomain: "learnstage-88b93.firebaseapp.com",
   databaseURL: "https://learnstage-88b93-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -13,7 +13,7 @@ export const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(environment);
 
 
 // Initialize Cloud Firestore and get a reference to the service
