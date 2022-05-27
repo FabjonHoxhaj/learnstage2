@@ -19,7 +19,7 @@ import { HashtagsComponent } from './hashtags/hashtags.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
   

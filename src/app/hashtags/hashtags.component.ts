@@ -13,7 +13,10 @@ export class HashtagsComponent implements OnInit {
   ngOnInit(): void {
     this.item.getData().subscribe(items => {
       console.log(items);
+      console.log("Test");
     })
   }
+
+  
 
 }
