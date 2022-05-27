@@ -9,6 +9,6 @@ export class OrdersService {
   constructor(private firestore: AngularFirestore) { }
 
   getData() { 
-    return this.firestore.collection("hashtags").snapshotChanges();
+    return this.firestore.collection("hashtags").valueChanges();
   }
 }

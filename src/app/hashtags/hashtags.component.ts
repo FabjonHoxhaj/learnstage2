@@ -8,15 +8,15 @@ import { OrdersService } from '../orders.service';
 })
 export class HashtagsComponent implements OnInit {
 
+  array: any = [];
+
   constructor(private item: OrdersService) { }
 
   ngOnInit(): void {
     this.item.getData().subscribe(items => {
-      console.log(items);
-      console.log("Test");
+      for (let i of Object.values(items))
+            this.array.push(i)
     })
   }
-
-  
 
 }
