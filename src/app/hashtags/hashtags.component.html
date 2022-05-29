@@ -1,11 +1,12 @@
 <p>Aus Datenbank gelesen</p>
 
-<div *ngFor = "let hashtagName of array">
+<div *ngFor = "let hashtagName of arraySet">
     <span>{{hashtagName.name}}</span>
 </div>
 
 <br>
 
 <p>In die Datenbank schreiben!</p>
-
+<input id="inputValue">
+<button (click)="createHashtag()">Hashtag+</button>
 

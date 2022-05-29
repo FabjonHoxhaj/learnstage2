@@ -8,15 +8,21 @@ import { CrudService } from '../crud.service';
 })
 export class HashtagsComponent implements OnInit {
 
-  array: any = [];
+  arraySet: any = new Set();
 
   constructor(private item: CrudService) { }
 
   ngOnInit(): void {
     this.item.readData().subscribe(items => {
       for (let i of Object.values(items))
-            this.array.push(i)
+            this.arraySet.add(i)
     })
+  }
+
+  createHashtag() {
+    let input = (<HTMLInputElement>document.getElementById("inputValue")).value;
+    this.item.createData(input);
+    //this.arraySet.add(input);
   }
 
 }

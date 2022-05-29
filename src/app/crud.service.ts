@@ -9,10 +9,14 @@ export class CrudService {
   constructor(private firestore: AngularFirestore) { }
 
   readData() { 
-    return this.firestore.collection("hashtags").valueChanges();
+      return this.firestore.collection("hashtags").valueChanges();
   }
 
-  createData() {
+  createData(input: String) {
+      const merkel = this.firestore.collection("hashtags");
+      merkel.doc("Vue").set({name: input})
+      //const hashtagDoc = {name: input};
+      //merkel.add(hashtagDoc);
 
   }
 }
