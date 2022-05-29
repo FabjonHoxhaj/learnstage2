@@ -8,7 +8,11 @@ export class OrdersService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getData() { 
+  readData() { 
     return this.firestore.collection("hashtags").valueChanges();
+  }
+
+  createData() {
+
   }
 }

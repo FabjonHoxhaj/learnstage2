@@ -13,7 +13,7 @@ export class HashtagsComponent implements OnInit {
   constructor(private item: OrdersService) { }
 
   ngOnInit(): void {
-    this.item.getData().subscribe(items => {
+    this.item.readData().subscribe(items => {
       for (let i of Object.values(items))
             this.array.push(i)
     })
