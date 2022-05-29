@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService } from '../orders.service';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-hashtags',
@@ -10,7 +10,7 @@ export class HashtagsComponent implements OnInit {
 
   array: any = [];
 
-  constructor(private item: OrdersService) { }
+  constructor(private item: CrudService) { }
 
   ngOnInit(): void {
     this.item.readData().subscribe(items => {
