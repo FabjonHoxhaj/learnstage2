@@ -10,6 +10,7 @@ export class CrudService {
 
   readData() { 
       return this.firestore.collection("hashtags").valueChanges();
+      //this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").valueChanges(); --> Name aus einer Datei auslesen also verschachtelt 
   }
 
   createData(input: String) {
