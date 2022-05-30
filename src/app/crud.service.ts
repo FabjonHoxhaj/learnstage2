@@ -14,9 +14,7 @@ export class CrudService {
 
   createData(input: String) {
       const merkel = this.firestore.collection("hashtags");
-      merkel.doc("Vue").set({name: input})
-      //const hashtagDoc = {name: input};
-      //merkel.add(hashtagDoc);
-
+      const inputSplit = input.split("#");
+      merkel.doc(inputSplit[1]).set({name: input})
   }
 }
