@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HashtagsComponent } from './hashtags/hashtags.component';
 import { HashtagMaterialsComponent } from './hashtag-materials/hashtag-materials.component';
 import { HomeComponent } from './home/home.component';
+import { AdDirective } from './ad.directive';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     HashtagsComponent,
     HashtagMaterialsComponent,
     HomeComponent,
+    AdDirective,
   ],
   imports: [
     BrowserModule,
