@@ -12,6 +12,10 @@ import { HashtagsComponent } from './hashtags/hashtags.component';
 import { HashtagMaterialsComponent } from './hashtag-materials/hashtag-materials.component';
 import { HomeComponent } from './home/home.component';
 import { AdDirective } from './ad.directive';
+import { AdBannerComponent } from './ad-banner/ad-banner.component';
+import { HeroJobAdComponent } from './hero-job-ad/hero-job-ad.component';
+import { HeroProfileComponent } from './hero-profile/hero-profile.component';
+import { AdService } from './ad.service';
 
 
 @NgModule({
@@ -21,6 +25,10 @@ import { AdDirective } from './ad.directive';
     HashtagMaterialsComponent,
     HomeComponent,
     AdDirective,
+    AdBannerComponent,
+    HeroJobAdComponent,
+    HeroProfileComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,7 @@ import { AdDirective } from './ad.directive';
     AngularFirestoreModule
   ],
   
-  providers: [],
+  providers: [AdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
