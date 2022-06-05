@@ -8,14 +8,18 @@ export class CrudService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  readData() { 
+  readHashtags() { 
       return this.firestore.collection("hashtags").valueChanges();
-      //this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").valueChanges(); --> Name aus einer Datei auslesen also verschachtelt 
   }
 
-  createData(input: String) {
+  createHashtags(input: String) {
       const merkel = this.firestore.collection("hashtags");
       const inputSplit = input.split("#");
       merkel.doc(inputSplit[1]).set({name: input})
+  }
+
+  readFiles(hashtagString: any) {
+    const hashtagSplit = hashtagString.split("#");
+    return this.firestore.collection("hashtags").doc(hashtagSplit[1]).collection("files").doc("file1").valueChanges();
   }
 }

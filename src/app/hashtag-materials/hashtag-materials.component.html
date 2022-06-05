@@ -1,5 +1,21 @@
-<p>hashtag-materials works!</p>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-<div>
-    
-</div>
+<body>
+    <div class="container">
+        <div class="containerInput">
+            <label>
+                <input type="file" hidden /> <i class="material-icons">add</i>
+            </label>
+        </div>
+        <button class="upload">
+            <i class="material-icons">file_upload</i>
+        </button>
+    </div>
+ <br>
+    <div class="line"></div>
+    <div class="containerUploads">
+        <div class="fileIcon"><i class="material-icons">download_for_offline</i></div>
+        <div *ngFor="let file of arrayFile">{{file}}</div>
+    </div>

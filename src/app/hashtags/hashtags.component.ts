@@ -9,11 +9,12 @@ import { CrudService } from '../crud.service';
 export class HashtagsComponent implements OnInit {
 
   arraySet: any = new Set();
+  arrayFiles: any = new Set();
 
   constructor(private item: CrudService) { }
 
   ngOnInit(): void {
-    this.item.readData().subscribe(items => {
+    this.item.readHashtags().subscribe(items => {
       for (let i of Object.values(items))
             this.arraySet.add(i)
     })
@@ -21,8 +22,14 @@ export class HashtagsComponent implements OnInit {
 
   createHashtag() {
     let input = (<HTMLInputElement>document.getElementById("inputValue")).value;
-    this.item.createData(input);
-    //this.arraySet.add(input);
+    this.item.createHashtags(input);
+  }
+
+  loadHashtagFiles(hashtagString: any) {
+    const fileName = this.item.readFiles(hashtagString).subscribe(data => console.log(data),
+    error => console.error(error));
+    this.arrayFiles.add(fileName);
+
   }
 
 }

@@ -1,0 +1,13 @@
+span {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+div {
+    margin: 5px;
+}
+
+span:hover {
+    background-color: #e4d5c5;
+}
+
