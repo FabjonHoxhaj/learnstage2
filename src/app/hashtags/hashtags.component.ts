@@ -11,7 +11,6 @@ import { CrudService } from '../crud.service';
 export class HashtagsComponent implements OnInit {
 
   arraySet: any = new Set();
-  arrayFiles: any = new Set();
 
   constructor(private item: CrudService) { }
 
@@ -28,10 +27,7 @@ export class HashtagsComponent implements OnInit {
   }
 
   loadHashtagFiles(hashtagString: any) {
-    const fileName = this.item.readFiles(hashtagString).subscribe(data => console.log(data),
-    error => console.error(error));
-    this.arrayFiles.add(fileName);
-    console.log(fileName);
+    this.item.readFiles(hashtagString);
   }
 
 }

@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { HashtagsComponent } from '../hashtags/hashtags.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { CrudService } from '../crud.service';
+
 
 @Component({
   selector: 'app-hashtag-materials',
   templateUrl: './hashtag-materials.component.html',
-  styleUrls: ['./hashtag-materials.component.css'],
-  providers: [HashtagsComponent]
+  styleUrls: ['./hashtag-materials.component.css']
 })
 export class HashtagMaterialsComponent implements OnInit {
 
-  arrayFile: any = new Set();
+  files: any[] = [];
 
-  constructor(private hashtags: HashtagsComponent) { }
+  constructor(private fileName: CrudService) { }
 
   ngOnInit(): void {
+      this.fileName.getFileName().subscribe((data)=>{
+        this.files = data;
+      })
   }
 
-  arrayFiles() {
-    const file = this.hashtags.arrayFiles[0];
-    this.arrayFile.add(file);
-    console.log(file);
-  }
+
 
 }
