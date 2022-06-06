@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { CrudService } from '../crud.service';
+
 
 @Component({
   selector: 'app-hashtags',
   templateUrl: './hashtags.component.html',
   styleUrls: ['./hashtags.component.css']
 })
+
 export class HashtagsComponent implements OnInit {
 
   arraySet: any = new Set();
@@ -29,7 +31,7 @@ export class HashtagsComponent implements OnInit {
     const fileName = this.item.readFiles(hashtagString).subscribe(data => console.log(data),
     error => console.error(error));
     this.arrayFiles.add(fileName);
-
+    console.log(fileName);
   }
 
 }
