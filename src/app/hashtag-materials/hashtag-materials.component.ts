@@ -14,7 +14,7 @@ export class HashtagMaterialsComponent implements OnInit {
   constructor(private fileName: CrudService) { }
 
   ngOnInit(): void {
-      this.fileName.getFileName().subscribe((data)=>{
+      this.fileName.getFileName().subscribe((data)=> {
         this.files = data;
       })
   }
