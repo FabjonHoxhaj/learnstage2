@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,24 +28,16 @@ export class CrudService {
     this.firestore.collection("hashtags").doc(hashtagSplit[1]).collection("files").valueChanges().subscribe((data: any) => 
     { console.log(data);
       for(let i of Object.values(data))
-      
-      merkel.push(i)});
+      merkel.push(i)
+    });
       this.setFileName(merkel)
   }
 
-  setFileName(value:[]) {
-    this.fileName.next(value);
+  setFileName(element:[]) {
+    this.fileName.next(element);
   }
 
   getFileName() {
     return this.fileName;
   }
-
-  loadFiles() {
-      //const name =this.fileName[0];
-      //console.log(name);
-      return name;
-  }
-
-
 }
