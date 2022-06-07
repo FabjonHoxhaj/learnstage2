@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CrudService } from '../crud.service';
+import { FileUploadService } from '../file-upload.service';
+import { FileUpload } from '../models/file-upload.model';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -11,12 +14,31 @@ export class HashtagMaterialsComponent implements OnInit {
 
   files: any[] = [];
 
-  constructor(private fileName: CrudService) { }
+  constructor(private fileName: CrudService, private uploadService: FileUploadService) { }
+
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload;
+  fileUploads?: any[];
 
   ngOnInit(): void {
       this.fileName.getFileName().subscribe((data)=> {
         this.files = data;
       })
+  }
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        this.uploadService.pushFileToStorage(this.currentFileUpload)
+      }
+    }
   }
 
 
