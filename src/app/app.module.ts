@@ -11,11 +11,10 @@ import { AppComponent } from './app.component';
 import { HashtagsComponent } from './hashtags/hashtags.component';
 import { HashtagMaterialsComponent } from './hashtag-materials/hashtag-materials.component';
 import { HomeComponent } from './home/home.component';
-import { AdDirective } from './ad.directive';
-import { AdBannerComponent } from './ad-banner/ad-banner.component';
-import { HeroJobAdComponent } from './hero-job-ad/hero-job-ad.component';
-import { HeroProfileComponent } from './hero-profile/hero-profile.component';
-import { AdService } from './ad.service';
+
+import { UploadFormComponent } from './components/upload-form/upload-form.component';
+import { UploadListComponent } from './components/upload-list/upload-list.component';
+import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
 
 
 @NgModule({
@@ -24,10 +23,9 @@ import { AdService } from './ad.service';
     HashtagsComponent,
     HashtagMaterialsComponent,
     HomeComponent,
-    AdDirective,
-    AdBannerComponent,
-    HeroJobAdComponent,
-    HeroProfileComponent
+    UploadFormComponent,
+    UploadListComponent,
+    UploadDetailsComponent
     
   ],
   imports: [
@@ -37,7 +35,7 @@ import { AdService } from './ad.service';
     AngularFirestoreModule
   ],
   
-  providers: [AdService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

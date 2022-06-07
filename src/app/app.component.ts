@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdService } from './ad.service';
-import { AdItem } from './ad-item';
+
 
 @Component({
   selector: 'app-root',
@@ -15,11 +14,9 @@ import { AdItem } from './ad-item';
 export class AppComponent implements OnInit{
   title = 'learnstage2';
 
-  ads: AdItem[] = [];
-
-  constructor(private adService: AdService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.ads = this.adService.getAds();
+    
   }
 }
