@@ -11,6 +11,7 @@ export class FileUploadService {
   constructor(private storage: AngularFireStorage) { }
 
   private basePath = '/uploads';
+  urlLinks: any = [];
 
   pushFileToStorage(fileUpload: FileUpload) {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
@@ -22,6 +23,9 @@ export class FileUploadService {
                 fileUpload.url = downloadURL;
                 fileUpload.name = fileUpload.file.name;
                 this.saveFileData(fileUpload);
+                const url: String = fileUpload.url;
+                console.log(fileUpload.name);
+                this.urlLinks.push(url);
             });
         })
     ).subscribe();
@@ -29,6 +33,10 @@ export class FileUploadService {
 
 private saveFileData(fileUpload: FileUpload): void {
   //this.db.list(this.basePath).push(fileUpload);
+}
+
+saveURL() {
+   return this.urlLinks[0];
 }
 
 }

@@ -16,7 +16,7 @@
  <br>
     <div class="line"></div>
     <div class="containerUploads" *ngFor="let file of files">
-        <div class="fileIcon"><i class="material-icons">download_for_offline</i></div>
+        <div (click)="downloadFile()" class="fileIcon"><i class="material-icons">download_for_offline</i></div>
             <div>
                 {{file.name}}
             </div>

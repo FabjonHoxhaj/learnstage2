@@ -23,14 +23,14 @@ export class CrudService {
   }
 
   readFiles(hashtagString: any) {
-    let merkel: any = [];
+    let files: any = [];
     const hashtagSplit = hashtagString.split("#");
     this.firestore.collection("hashtags").doc(hashtagSplit[1]).collection("files").valueChanges().subscribe((data: any) => 
     { console.log(data);
       for(let i of Object.values(data))
-      merkel.push(i)
+      files.push(i)
     });
-      this.setFileName(merkel)
+      this.setFileName(files)
   }
 
   setFileName(element:[]) {
@@ -39,5 +39,13 @@ export class CrudService {
 
   getFileName() {
     return this.fileName;
+  }
+
+  createFileName() {
+      this.firestore.collection("hashtags")
+  }
+
+  createURL() {
+
   }
 }

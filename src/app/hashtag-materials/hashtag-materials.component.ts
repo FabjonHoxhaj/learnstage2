@@ -41,6 +41,10 @@ export class HashtagMaterialsComponent implements OnInit {
     }
   }
 
+  downloadFile() {
+    console.log(this.uploadService.saveURL());
+  }
+
 
 
 }
