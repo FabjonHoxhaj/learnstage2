@@ -36,9 +36,11 @@ export class HashtagMaterialsComponent implements OnInit {
       this.selectedFiles = undefined;
       if (file) {
         this.currentFileUpload = new FileUpload(file);
-        this.uploadService.pushFileToStorage(this.currentFileUpload)
+        this.uploadService.pushFileToStorage(this.currentFileUpload);
       }
     }
+    const filename = this.uploadService.saveFileName();
+    this.fileName.createFileName(filename);
   }
 
   downloadFile() {

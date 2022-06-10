@@ -12,6 +12,7 @@ export class FileUploadService {
 
   private basePath = '/uploads';
   urlLinks: any = [];
+  fileName: any = [];
 
   pushFileToStorage(fileUpload: FileUpload) {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
@@ -24,8 +25,10 @@ export class FileUploadService {
                 fileUpload.name = fileUpload.file.name;
                 this.saveFileData(fileUpload);
                 const url: String = fileUpload.url;
-                console.log(fileUpload.name);
                 this.urlLinks.push(url);
+                const filename: String = fileUpload.name;
+                console.log(filename);
+                this.fileName.push(filename);
             });
         })
     ).subscribe();
@@ -37,6 +40,12 @@ private saveFileData(fileUpload: FileUpload): void {
 
 saveURL() {
    return this.urlLinks[0];
+}
+
+saveFileName() {
+  console.log(this.fileName[0]);
+  return this.fileName[0];
+
 }
 
 }
