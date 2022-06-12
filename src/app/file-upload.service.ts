@@ -49,6 +49,7 @@ private saveFileData(fileUpload: FileUpload): void {
   //this.db.list(this.basePath).push(fileUpload);
 }
 
+
 saveURL() {
    return this.urlLinks[0];
 }

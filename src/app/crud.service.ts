@@ -10,7 +10,9 @@ export class CrudService {
   constructor(private firestore: AngularFirestore, ) { }
 
   fileName: BehaviorSubject<[]> = new BehaviorSubject([]);
-  hash: BehaviorSubject<string> = new BehaviorSubject(" ");
+  hashtag: BehaviorSubject<string> = new BehaviorSubject("");
+  downloadURL: BehaviorSubject<string> = new BehaviorSubject(" ");
+
   
 
   readHashtags() { 
@@ -41,25 +43,25 @@ export class CrudService {
     return this.fileName;
   }
 
-  /*createFileName(filename: any) {
-      this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").doc("file3").set({name: filename});
-      console.log(filename);
-  }*/
 
   saveHashtagFile(filename: any, url: any) {
-        this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").doc("file6").set({name: filename, url: url});
+        this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").doc("file4").set({name: filename, url: url});
   }
 
-
-  createURL() {
-      
-  }
 
   saveHashtag(hashtag: any) {
-    this.hash.next(hashtag);
+    this.hashtag.next(hashtag);
   }
 
   getHashtag() {
-    return this.hash;
+    return this.hashtag;
+  }
+
+  saveURL() {
+
+  }
+
+  getURL() {
+    let url: any = [];
   }
 }

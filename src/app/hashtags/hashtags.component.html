@@ -1,13 +1,10 @@
 <p>Aus Datenbank gelesen</p>
 
 <div *ngFor="let hashtag of arraySet">
-    <span id="hashtagString" (click)="loadHashtagFiles(hashtag.name)" routerLink="/materials">{{hashtag.name}}</span>
+    <span (click)="loadHashtagFiles(hashtag.name)" routerLink="/materials">{{hashtag.name}}</span>
 </div>
 
 <br>
-
-   <!--<span id="hashtagString" (click)="loadHashtagFiles()" routerLink="/materials">#Einführung in die Programmierung</span> <br>
-    <span id="hashtagString" (click)="loadHashtagFiles()" routerLink="/materials">#Statistik</span>-->
 
 <p>In die Datenbank schreiben!</p>
 <input id="inputValue">
