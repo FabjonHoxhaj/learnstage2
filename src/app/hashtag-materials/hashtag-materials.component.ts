@@ -14,14 +14,15 @@ export class HashtagMaterialsComponent implements OnInit {
 
   files: any[] = [];
 
-  constructor(private fileName: CrudService, private uploadService: FileUploadService) { }
+  constructor(private hashtagFile: CrudService, private uploadService: FileUploadService) { }
 
   selectedFiles?: FileList;
   currentFileUpload?: FileUpload;
   fileUploads?: any[];
 
   ngOnInit(): void {
-      this.fileName.getFileName().subscribe((data)=> {
+      this.hashtagFile.getFileName().subscribe((data)=> {
+        this.files = [];
         this.files = data;
       })
   }
@@ -40,7 +41,9 @@ export class HashtagMaterialsComponent implements OnInit {
       }
     }
     const filename = this.uploadService.saveFileName();
-    this.fileName.createFileName(filename);
+    const url = this.uploadService.saveURL();
+    //this.hashtagFile.saveHashtagFile(filename, url);
+    
   }
 
   downloadFile() {

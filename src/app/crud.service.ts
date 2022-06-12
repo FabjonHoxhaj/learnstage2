@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, ) { }
 
   fileName: BehaviorSubject<[]> = new BehaviorSubject([]);
+  hash: BehaviorSubject<string> = new BehaviorSubject(" ");
   
 
   readHashtags() { 
@@ -40,12 +41,25 @@ export class CrudService {
     return this.fileName;
   }
 
-  createFileName(filename: any) {
+  /*createFileName(filename: any) {
       this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").doc("file3").set({name: filename});
-      console.log(filename)
+      console.log(filename);
+  }*/
+
+  saveHashtagFile(filename: any, url: any) {
+        this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").doc("file6").set({name: filename, url: url});
   }
+
 
   createURL() {
       
+  }
+
+  saveHashtag(hashtag: any) {
+    this.hash.next(hashtag);
+  }
+
+  getHashtag() {
+    return this.hash;
   }
 }

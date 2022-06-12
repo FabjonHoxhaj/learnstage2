@@ -28,6 +28,7 @@ export class HashtagsComponent implements OnInit {
 
   loadHashtagFiles(hashtagString: any) {
     this.item.readFiles(hashtagString);
+    this.item.saveHashtag(hashtagString);
   }
 
 }

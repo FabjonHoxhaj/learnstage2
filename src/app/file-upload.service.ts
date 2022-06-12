@@ -1,14 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FileUpload } from '../app/models/file-upload.model';
 import { finalize } from 'rxjs/operators';
+import { CrudService } from './crud.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FileUploadService {
+export class FileUploadService implements OnInit{
 
-  constructor(private storage: AngularFireStorage) { }
+  constructor(private storage: AngularFireStorage, private item: CrudService) { }
+
+  hashtag: any;
+
+  ngOnInit(): void {
+    this.item.getHashtag().subscribe((res) =>{
+      this.hashtag = res;
+    })
+  }
 
   private basePath = '/uploads';
   urlLinks: any = [];
@@ -27,8 +36,10 @@ export class FileUploadService {
                 const url: String = fileUpload.url;
                 this.urlLinks.push(url);
                 const filename: String = fileUpload.name;
-                console.log(filename);
                 this.fileName.push(filename);
+                this.item.saveHashtagFile(filename, url);
+                //this.item.setFileName([]);
+                //this.item.readFiles("Einführung in die Programmierung");
             });
         })
     ).subscribe();
@@ -43,7 +54,6 @@ saveURL() {
 }
 
 saveFileName() {
-  console.log(this.fileName[0]);
   return this.fileName[0];
 
 }
