@@ -3,6 +3,7 @@ import { CrudService } from '../crud.service';
 import { FileUploadService } from '../file-upload.service';
 import { FileUpload } from '../models/file-upload.model';
 import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -14,13 +15,14 @@ export class HashtagMaterialsComponent implements OnInit {
 
   files: any[] = [];
 
-  constructor(private hashtagFile: CrudService, private uploadService: FileUploadService) { }
+  constructor(private hashtagFile: CrudService, private uploadService: FileUploadService, private activate: ActivatedRoute) { }
 
   selectedFiles?: FileList;
   currentFileUpload?: FileUpload;
   fileUploads?: any[];
 
   ngOnInit(): void {
+      this.hashtagFile.readFiles(this.activate.snapshot.paramMap.get("name"));
       this.hashtagFile.getFileName().subscribe((data)=> {
         this.files = [];
         this.files = data;
@@ -37,19 +39,12 @@ export class HashtagMaterialsComponent implements OnInit {
       this.selectedFiles = undefined;
       if (file) {
         this.currentFileUpload = new FileUpload(file);
-        this.uploadService.pushFileToStorage(this.currentFileUpload);
+        this.uploadService.pushFileToStorage(this.activate.snapshot.paramMap.get("name"), this.currentFileUpload);
       }
     }
     const filename = this.uploadService.saveFileName();
     const url = this.uploadService.saveURL();
-    //this.hashtagFile.saveHashtagFile(filename, url);
-    
   }
-
-  downloadFile() {
-    console.log(this.uploadService.saveURL());
-  }
-
 
 
 }

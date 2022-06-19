@@ -23,7 +23,7 @@ export class FileUploadService implements OnInit{
   urlLinks: any = [];
   fileName: any = [];
 
-  pushFileToStorage(fileUpload: FileUpload) {
+  pushFileToStorage(hashtagString: any, fileUpload: FileUpload) {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, fileUpload.file);
@@ -37,7 +37,7 @@ export class FileUploadService implements OnInit{
                 this.urlLinks.push(url);
                 const filename: String = fileUpload.name;
                 this.fileName.push(filename);
-                this.item.saveHashtagFile(filename, url);
+                this.item.saveHashtagFile(hashtagString, filename, url);
                 //this.item.setFileName([]);
                 //this.item.readFiles("Einführung in die Programmierung");
             });

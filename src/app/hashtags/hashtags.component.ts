@@ -16,6 +16,7 @@ export class HashtagsComponent implements OnInit {
 
   ngOnInit(): void {
     this.item.readHashtags().subscribe(items => {
+      this.arraySet= new Set();
       for (let i of Object.values(items))
             this.arraySet.add(i)
     })
@@ -23,7 +24,14 @@ export class HashtagsComponent implements OnInit {
 
   createHashtag() {
     let input = (<HTMLInputElement>document.getElementById("inputValue")).value;
-    this.item.createHashtags(input);
+    const hashtag = input;
+    if(hashtag.startsWith("#")) {
+      this.item.createHashtags(input);
+    }
+   else {
+    this.item.createHashtags("#" + input);
+   }
+   
   }
 
   loadHashtagFiles(hashtagString: any) {

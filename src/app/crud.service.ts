@@ -29,10 +29,12 @@ export class CrudService {
     let files: any = [];
     const hashtagSplit = hashtagString.split("#");
     this.firestore.collection("hashtags").doc(hashtagSplit[1]).collection("files").valueChanges().subscribe((data: any) => { 
-      for(let i of Object.values(data))
-      files.push(i)
-    });
+      files = [];
+      for(let i of Object.values(data)) {
+        files.push(i)
+      }
       this.setFileName(files)
+    });
   }
 
   setFileName(element:[]) {
@@ -44,8 +46,9 @@ export class CrudService {
   }
 
 
-  saveHashtagFile(filename: any, url: any) {
-        this.firestore.collection("hashtags").doc("Einführung in die Programmierung").collection("files").doc("file4").set({name: filename, url: url});
+  saveHashtagFile(hashtagString: any, filename: any, url: any) {
+    const hashtagSplit = hashtagString.split("#");
+        this.firestore.collection("hashtags").doc(hashtagSplit[1]).collection("files").doc(filename).set({name: filename, url: url});
   }
 
 

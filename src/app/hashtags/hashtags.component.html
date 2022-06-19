@@ -1,7 +1,7 @@
 <p>Aus Datenbank gelesen</p>
 
 <div *ngFor="let hashtag of arraySet">
-    <span (click)="loadHashtagFiles(hashtag.name)" routerLink="/materials">{{hashtag.name}}</span>
+    <span [routerLink]="['/materials', hashtag.name]">{{hashtag.name}}</span>
 </div>
 
 <br>
