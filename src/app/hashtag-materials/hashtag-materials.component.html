@@ -17,9 +17,12 @@
     <div class="line"></div>
     <div class="containerUploads" *ngFor="let file of files">
         <div class="fileIcon"><a style="text-decoration: none; color: inherit;" href={{file.url}}><i class="material-icons">download_for_offline</i></a></div>
-            <div>
+            <div style="display: flex;">
                <a  style="text-decoration: none; color: inherit;"  href={{file.url}}>
                 {{file.name}}
                </a> 
+               <div class="containerHam"><app-hamburger-tag [filename]=file.name></app-hamburger-tag></div>
             </div>
+            
+
     </div>
