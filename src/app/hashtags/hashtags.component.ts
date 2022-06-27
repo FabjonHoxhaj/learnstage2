@@ -11,6 +11,7 @@ import { CrudService } from '../crud.service';
 export class HashtagsComponent implements OnInit {
 
   arraySet: any = new Set();
+  personalTags: []= [];
 
   constructor(private item: CrudService) { }
 
@@ -20,6 +21,10 @@ export class HashtagsComponent implements OnInit {
       for (let i of Object.values(items))
             this.arraySet.add(i)
     })
+    this.item.readPersonalTags().subscribe((data: any) => {
+      this.personalTags = data;
+      console.log(this.personalTags);
+    });
   }
 
   createHashtag() {

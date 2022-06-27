@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { FirebaseApp } from '@angular/fire/app';
+import { Firestore } from 'firebase/firestore';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +28,16 @@ export class CrudService {
       merkel.doc(inputSplit[1]).set({name: input})
   }
 
+  createPersonalHashtag(input: string, filename: string) {
+    const merkel = this.firestore.collection("users").doc("fabjon");
+//lesen der subcollections, lesen der subcollection aus docuemnt field
+//input der subcollection hinzufügen
+//setter mit neuer Subcollection aufrufen
+
+    merkel.set({subcollections: [1,2,3,4]});
+    merkel.collection(input).add({name:filename})
+}
+
   readFiles(hashtagString: any) {
     let files: any = [];
     const hashtagSplit = hashtagString.split("#");
@@ -35,6 +48,10 @@ export class CrudService {
       }
       this.setFileName(files)
     });
+  }
+
+  readPersonalTags(): any{
+    return this.firestore.collection("users").doc("fabjon");
   }
 
   setFileName(element:[]) {

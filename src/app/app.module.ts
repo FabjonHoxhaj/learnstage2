@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HashtagsComponent } from './hashtags/hashtags.component';
 import { HashtagMaterialsComponent } from './hashtag-materials/hashtag-materials.component';
 import { HomeComponent } from './home/home.component';
+import { HamburgerTagComponent } from './hamburger-tag/hamburger-tag.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     HashtagsComponent,
     HashtagMaterialsComponent,
-    HomeComponent
+    HomeComponent,
+    HamburgerTagComponent
   ],
   imports: [
     BrowserModule,
